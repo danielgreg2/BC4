@@ -51,6 +51,7 @@ class App extends React.Component {
                   </tr>
                   <BuildingList
                     data={this.props.data}
+                    filterText = {this.state.filterText}
                   />
                 </table>
               </div>
