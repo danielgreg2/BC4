@@ -9,7 +9,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       filterText: '',
-      selectedBuilding: 0
+      selectedBuilding: 1
     };
   }
 
@@ -59,7 +59,10 @@ class App extends React.Component {
               </div>
             </div>
             <div className="column2">
-              <ViewBuilding />
+              <ViewBuilding 
+                data={this.props.data}
+                selectedBuilding = {this.state.selectedBuilding}
+              />
             </div>
           </div>
           <Credit />
