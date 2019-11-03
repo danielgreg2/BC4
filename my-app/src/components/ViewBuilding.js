@@ -2,8 +2,16 @@ import React from 'react';
 
 class ViewBuilding extends React.Component {
 	render() {
+		const {data} = this.props
 		//console.log("Building ID: ", this.props.selectedBuilding)
-		const buildingCard = this.props.data[this.props.selectedBuilding - 1];
+
+		/*
+		const index = data.findIndex(function(item, i){
+			return item.id === this.props.selectedBuilding
+		});
+		*/
+		//const buildingCard = this.props.data[index]
+		const buildingCard = data[this.props.selectedBuilding - 1];
 		if(buildingCard.address == null){
 			console.log("This building has no address")
 			buildingCard.address = ''

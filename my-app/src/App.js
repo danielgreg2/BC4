@@ -3,15 +3,17 @@ import Search from './components/Search';
 import ViewBuilding from './components/ViewBuilding';
 import BuildingList from './components/BuildingList';
 import AddBuilding from './components/AddBuilding'
-//import RemoveBuilding from './components/RemoveBuilding'
+import RemoveBuilding from './components/RemoveBuilding'
 import Credit from './components/Credit';
+import listOfBuildings from './data/data';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       filterText: '',
-      selectedBuilding: 1
+      selectedBuilding: 1,
+      data: listOfBuildings
     };
   }
 
@@ -58,7 +60,7 @@ class App extends React.Component {
                     </td>
                   </tr>
                   <BuildingList
-                    data={this.props.data}
+                    data={this.state.data}
                     filterText = {this.state.filterText}
                     selectedBuilding = {this.state.selectedBuilding}
                     selectedUpdate = {this.selectedUpdate.bind(this)}
@@ -68,15 +70,21 @@ class App extends React.Component {
             </div>
             <div className="column2">
               <ViewBuilding 
-                data={this.props.data}
+                data={this.state.data}
                 selectedBuilding = {this.state.selectedBuilding}
               />
+              <div className="column1">
+                <RemoveBuilding
+                  data={this.state.data}
+                  selectedBuilding = {this.state.selectedBuilding}
+                  updateData={this.updateData}
+                />
+              </div>
             </div>
             <div className="column1">
               <AddBuilding
-                data={this.props.data}
-                updateData={this.updateData}
-                selectedBuilding = {this.state.selectedBuilding}
+                data={this.state.data}
+                updateData={this.updateData.bind(this)}
               />
             </div>
           </div>

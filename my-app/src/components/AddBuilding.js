@@ -9,8 +9,10 @@ class AddBuilding extends React.Component {
         this.state = {
             code: '',
             name: '',
+            address: '',
             latitude: '',
-            longitude: ''
+            longitude: '',
+            newData: this.props.data
         }
     }
 
@@ -23,6 +25,12 @@ class AddBuilding extends React.Component {
     nameUpdate = (event) => {
         this.setState({
             name: event.target.value
+        })
+    }
+
+    addressUpdate = (event) => {
+        this.setState({
+            address: event.target.value
         })
     }
 
@@ -52,8 +60,13 @@ class AddBuilding extends React.Component {
         console.log(Object.keys(this.props.data).length)
         //newId = Object.keys(this.props.data).length + 1
 
-        this.props.data.push({
-            "id": Object.keys(this.props.data).length + 1,
+        //I get the new id by looking at the last element in the list, taking its id, then adding by 1
+        //This is because even if I get rid of items in the list, I want the newest item not to duplicate a different building's id
+        console.log(this.props.data[Object.keys(this.props.data).length - 1].id)
+        const newId = this.props.data[Object.keys(this.props.data).length - 1].id + 1
+
+        this.state.newData.push({
+            "id": newId,
             "code": this.state.code,
             "name": this.state.name,
             "coordinates": {
@@ -61,8 +74,8 @@ class AddBuilding extends React.Component {
                 "longitude": this.state.longitude
             }
         })
-        console.log(this.props.data)
-        this.props.updateData(this.props.data)
+        console.log(this.state.newData)
+        this.props.updateData(this.state.newData)
     }
 
 	render() {
@@ -82,6 +95,14 @@ class AddBuilding extends React.Component {
                         type='text'
                         value={this.state.name}
                         onChange={this.nameUpdate} 
+                    />
+                </div>
+                <div>
+                    <label>Address: </label>
+                    <input
+                        type='text'
+                        value={this.state.address}
+                        onChange={this.addressUpdate} 
                     />
                 </div>
                 <div>
