@@ -29,6 +29,12 @@ class App extends React.Component {
     })
   }
 
+  updateData(updatedData) {
+    this.setState({
+      data: updatedData
+    })
+  }
+
   render() {
     
     return (
@@ -69,6 +75,7 @@ class App extends React.Component {
             <div className="column1">
               <AddBuilding
                 data={this.props.data}
+                updateData={this.updateData}
                 selectedBuilding = {this.state.selectedBuilding}
               />
             </div>

@@ -45,6 +45,24 @@ class AddBuilding extends React.Component {
         "\nName: ", this.state.name, 
         "\nLatitude: ", this.state.latitude,
         "\nLongitude: ", this.state.longitude)
+
+        //Update the data list that is displaying the buildings
+        //I will append the new building data to the end of the list
+
+        console.log(Object.keys(this.props.data).length)
+        //newId = Object.keys(this.props.data).length + 1
+
+        this.props.data.push({
+            "id": Object.keys(this.props.data).length + 1,
+            "code": this.state.code,
+            "name": this.state.name,
+            "coordinates": {
+                "latitude": this.state.latitude,
+                "longitude": this.state.longitude
+            }
+        })
+        console.log(this.props.data)
+        this.props.updateData(this.props.data)
     }
 
 	render() {
