@@ -27,7 +27,7 @@ class ViewBuilding extends React.Component {
 				//console.log(buildingCard)
 			}
 			if(buildingCard.coordinates == null){
-				console.log("This building has no coordinates")
+				//console.log("This building has no coordinates")
 				buildingCard.coordinates = 0
 				//console.log(buildingCard)
 			}

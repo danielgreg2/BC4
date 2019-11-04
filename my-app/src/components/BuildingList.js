@@ -4,7 +4,7 @@ class BuilingList extends React.Component {
 	selectedUpdate(e) {
 		const id = e.currentTarget.getAttribute('data');	//grabs data-tag (which is the directory id) of specific row that was clicked on in the table
 		//console.log("You have clicked a row: ", id)					
-		console.log("This is the id of the row we clicked on: ", id)	//will output to console the id of the building that we click on
+		//console.log("This is the id of the row we clicked on: ", id)	//will output to console the id of the building that we click on
 		this.props.selectedUpdate(id)        //this is referring to the 'selectedUpdate' in App.js, it updates the selectedBuilding prop?
 	}
 	render() {

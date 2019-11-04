@@ -49,10 +49,12 @@ class AddBuilding extends React.Component {
     addRow = (event) => {
         event.preventDefault()
         alert("You have submitted a new building!")
+        /*
         console.log("Code: ", this.state.code,
         "\nName: ", this.state.name, 
         "\nLatitude: ", this.state.latitude,
         "\nLongitude: ", this.state.longitude)
+        */
 
         //Update the data list that is displaying the buildings
         //I will append the new building data to the end of the list
@@ -62,11 +64,12 @@ class AddBuilding extends React.Component {
 
         //I get the new id by looking at the last element in the list, taking its id, then adding by 1
         //This is because even if I get rid of items in the list, I want the newest item not to duplicate a different building's id
-        console.log(this.props.data[Object.keys(this.props.data).length - 1].id)
-        const newId = this.props.data[Object.keys(this.props.data).length - 1].id + 1
+        //console.log(this.props.data[Object.keys(this.props.data).length - 1].id)
+        //const newId = this.props.data[Object.keys(this.props.data).length - 1].id + 1
+        //console.log(this.props.newestId)
 
         this.state.newData.push({
-            "id": newId,
+            "id": this.props.newestId,
             "code": this.state.code,
             "name": this.state.name,
             "coordinates": {
@@ -75,8 +78,9 @@ class AddBuilding extends React.Component {
             },
             "address": this.state.address
         })
-        console.log(this.state.newData)
+        //console.log(this.state.newData)
         this.props.updateData(this.state.newData)
+        this.props.incrementNewestId(this.props.newestId)
     }
 
 	render() {

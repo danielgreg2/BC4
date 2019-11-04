@@ -13,7 +13,8 @@ class App extends React.Component {
     this.state = {
       filterText: '',
       selectedBuilding: -1,
-      data: listOfBuildings
+      data: listOfBuildings,
+      newestId: listOfBuildings[Object.keys(listOfBuildings).length - 1].id + 1
     };
   }
 
@@ -34,6 +35,12 @@ class App extends React.Component {
   updateData(updatedData) {
     this.setState({
       data: updatedData
+    })
+  }
+
+  incrementNewestId(id){
+    this.setState({
+      newestId: id + 1
     })
   }
 
@@ -88,6 +95,8 @@ class App extends React.Component {
                 <AddBuilding
                   data={this.state.data}
                   updateData={this.updateData.bind(this)}
+                  newestId={this.state.newestId}
+                  incrementNewestId={this.incrementNewestId.bind(this)}
                 />
             </div>
           </div>
