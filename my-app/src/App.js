@@ -12,7 +12,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       filterText: '',
-      selectedBuilding: 1,
+      selectedBuilding: -1,
       data: listOfBuildings
     };
   }
@@ -77,7 +77,8 @@ class App extends React.Component {
                 <RemoveBuilding
                   data={this.state.data}
                   selectedBuilding = {this.state.selectedBuilding}
-                  updateData={this.updateData}
+                  selectedUpdate = {this.selectedUpdate.bind(this)}
+                  updateData={this.updateData.bind(this)}
                 />
               </div>
             </div>
