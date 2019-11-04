@@ -5,17 +5,11 @@ class ViewBuilding extends React.Component {
 		const {data} = this.props
 		//console.log("Building ID: ", this.props.selectedBuilding)
 
-		/*
-		const index = data.findIndex(function(item, i){
-			return item.id === this.props.selectedBuilding
-		});
-		*/
-		//const buildingCard = this.props.data[index]
+		//If no building is selected, ask user to select a building
 		if(this.props.selectedBuilding === -1){
 			return(
 				<div>
 					<p>
-						{' '}
 						<i>
 							Click on a name to view more information<br />
 						</i>
@@ -25,8 +19,10 @@ class ViewBuilding extends React.Component {
 		}
 		else{
 			const buildingCard = data[this.props.selectedBuilding - 1];
+			//If the building does not have an address or coordinates, make those values empty
+			
 			if(buildingCard.address == null){
-				console.log("This building has no address")
+				//console.log("This building has no address")
 				buildingCard.address = ''
 				//console.log(buildingCard)
 			}
@@ -37,18 +33,22 @@ class ViewBuilding extends React.Component {
 			}
 			//console.log(buildingCard)
 			return (
-				<div>
-					<p>
-						{' '}
+				<div class="card text-white bg-primary mb-3">
+					<div class="card-header">
+						{buildingCard.code}
+					</div>
+					<div class="card-body">
+						<h5 class="card-title">{buildingCard.name}</h5>
+						<p class="card-text">
 						<i>
-							Building Code: {buildingCard.code}<br />
-							Building Name: {buildingCard.name}<br />
-							Building Address: {buildingCard.address}<br />
+							Building Address:<br />
+							{buildingCard.address}<br />
 							Building Coordinates:<br />
 							{buildingCard.coordinates.latitude}<br />
 							{buildingCard.coordinates.longitude}<br />
 						</i>
 					</p>
+					</div>
 				</div>
 			);
 		}

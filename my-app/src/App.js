@@ -41,7 +41,7 @@ class App extends React.Component {
     
     return (
       <div className="bg">
-        <div className="row">
+        <div className="row justify-content-center">
           <h1>UF Directory App</h1>
         </div>
 
@@ -68,12 +68,12 @@ class App extends React.Component {
                 </table>
               </div>
             </div>
-            <div className="column2">
+            <div className="col">
               <ViewBuilding 
                 data={this.state.data}
                 selectedBuilding = {this.state.selectedBuilding}
               />
-              <div className="column1">
+              <div className="col">
                 <RemoveBuilding
                   data={this.state.data}
                   selectedBuilding = {this.state.selectedBuilding}
@@ -82,11 +82,13 @@ class App extends React.Component {
                 />
               </div>
             </div>
-            <div className="column1">
-              <AddBuilding
-                data={this.state.data}
-                updateData={this.updateData.bind(this)}
-              />
+          </div>
+          <div className="row">
+            <div className="col">
+                <AddBuilding
+                  data={this.state.data}
+                  updateData={this.updateData.bind(this)}
+                />
             </div>
           </div>
           <Credit />

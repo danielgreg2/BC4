@@ -20,6 +20,9 @@ class Search extends React.Component {
 					onChange = {this.filterUpdate.bind(this)}	//every time the value inside the filter changes, filterUpdate is called
 																//this saves the value in the textbox, also passing it back to App.js
 				/>
+				<small class="form-text text-muted">
+					Filter by building <b>code</b> or building <b>name</b>.
+				</small>
 			</form>
 		);
 	}

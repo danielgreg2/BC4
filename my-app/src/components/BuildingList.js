@@ -15,7 +15,7 @@ class BuilingList extends React.Component {
 		//we filter the data, then we map through it
 		.filter(directory => {
 			//remove names that do not match current filterText
-			return directory.name.toLowerCase().indexOf(this.props.filterText.toLowerCase()) >= 0
+			return (directory.name.toLowerCase().indexOf(this.props.filterText.toLowerCase()) >= 0) || (directory.code.toLowerCase().indexOf(this.props.filterText.toLowerCase()) >= 0)
 		})
 		.map(directory => {
 			return (

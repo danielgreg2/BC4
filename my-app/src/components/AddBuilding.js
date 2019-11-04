@@ -57,7 +57,7 @@ class AddBuilding extends React.Component {
         //Update the data list that is displaying the buildings
         //I will append the new building data to the end of the list
 
-        console.log(Object.keys(this.props.data).length)
+        //console.log(Object.keys(this.props.data).length)
         //newId = Object.keys(this.props.data).length + 1
 
         //I get the new id by looking at the last element in the list, taking its id, then adding by 1
@@ -72,7 +72,8 @@ class AddBuilding extends React.Component {
             "coordinates": {
                 "latitude": this.state.latitude,
                 "longitude": this.state.longitude
-            }
+            },
+            "address": this.state.address
         })
         console.log(this.state.newData)
         this.props.updateData(this.state.newData)
@@ -81,47 +82,61 @@ class AddBuilding extends React.Component {
 	render() {
 		return (
             <form>
-                <div>
-                    <label>Code: </label>
+                <div class="form-group">
+                    <label >Code</label>
                     <input
+                        class="form-control"
                         type='text'
                         value={this.state.code}
-                        onChange={this.codeUpdate} 
+                        onChange={this.codeUpdate}
+                        placeholder="Building Code"
                     />
                 </div>
-                <div>
-                    <label>Name: </label>
+                <div class="form-group">
+                    <label>Name</label>
                     <input
+                        class="form-control"
                         type='text'
                         value={this.state.name}
-                        onChange={this.nameUpdate} 
+                        onChange={this.nameUpdate}
+                        placeholder="Building Name"
                     />
                 </div>
-                <div>
-                    <label>Address: </label>
+                <div class="form-group">
+                    <label>Address</label>
                     <input
+                        class="form-control"
                         type='text'
                         value={this.state.address}
-                        onChange={this.addressUpdate} 
+                        onChange={this.addressUpdate}
+                        placeholder="Building Address"
                     />
                 </div>
-                <div>
-                    <label>Coordinates: </label>
-                    <br />Latitude:
-                    <input
-                        type='text'
-                        value={this.state.latitude}
-                        onChange={this.latitudeUpdate} 
-                    />
-                    Longitude:
-                    <input
-                        type='text'
-                        value={this.state.ongitude}
-                        onChange={this.longitudeUpdate} 
-                    />
+                <label class="col-sm-2 col-form-label col-form-label-lg">Coordinates:</label>
+                <div class="form-row">
+                    <div class="form-group col">
+                        Latitude
+                        <input
+                            class="form-control"
+                            type='text'
+                            value={this.state.latitude}
+                            onChange={this.latitudeUpdate}
+                            placeholder="Enter a number"
+                        />
+                    </div>
+                    <div class="form-group col">
+                        Longitude
+                        <input
+                            class="form-control"
+                            type='text'
+                            value={this.state.ongitude}
+                            onChange={this.longitudeUpdate}
+                            placeholder="Enter a number"
+                        />
+                    </div>
                 </div>
-                <div>
-                    <button onClick={this.addRow}>
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary" onClick={this.addRow}>
                         Add a building!
                     </button>
                 </div>
